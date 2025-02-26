@@ -5,78 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FISH</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #000;
         }
         
-        html, body {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background-color: #000; /* Black background in case the WebP has transparent parts */
-        }
-        
-        .fullscreen-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Makes the WebP cover the entire screen */
-            z-index: -1;
-        }
-
-        .loading-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-family: Arial, sans-serif;
-            display: none; /* Hidden by default */
+        img {
+            display: block;
+            width: 100vw;
+            height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div class="loading-message" id="loading">Loading image...</div>
-    
-    <!-- Replace with your actual WebP URL -->
-    <img class="fullscreen-image" id="webp-image" 
-         src="https://gifdb.com/images/high/slow-motion-spinning-gray-fish-xugkqp6m9xi3xmlh.webp" 
-         alt="FISH"
-         onload="document.getElementById('loading').style.display = 'none';"
-         onerror="handleError()">
-
-    <script>
-        // Show loading message while WebP loads
-        document.getElementById('loading').style.display = 'block';
-        
-        // Error handling
-        function handleError() {
-            document.getElementById('loading').innerText = 'Error loading WebP image. Please check the URL or browser compatibility.';
-            document.getElementById('loading').style.display = 'block';
-            console.error('Failed to load WebP image');
-            
-            // Check browser compatibility
-            const isWebPSupported = document.createElement('canvas')
-                .toDataURL('image/webp').indexOf('data:image/webp') === 0;
-                
-            if (!isWebPSupported) {
-                document.getElementById('loading').innerText += '\nYour browser may not support WebP images.';
-            }
-        }
-        
-        // Make sure WebP is properly loaded
-        window.onload = function() {
-            const image = document.getElementById('webp-image');
-            
-            // Check if WebP is properly loaded
-            if (!image.complete || image.naturalWidth === 0) {
-                handleError();
-            }
-        };
-    </script>
+    <img src="https://gifdb.com/images/high/slow-motion-spinning-gray-fish-xugkqp6m9xi3xmlh.webp" alt="FISH">
 </body>
 </html>
